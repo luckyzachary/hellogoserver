@@ -1,4 +1,5 @@
 FROM golang
 MAINTAINER zachary
-# RUN go build -o hellogoserver main/main.go && ./hellogoserver
-CMD go build -o hellogoserver main/main.go && ./hellogoserver
+ADD ./main/ /main/
+RUN cd / && go mod init hellogoserver && go download && go build -o hellogoserver main/main.go
+CMD /hellogoserver
